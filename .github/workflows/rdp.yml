@@ -13,7 +13,6 @@ jobs:
       run: |
         Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
         Invoke-WebRequest https://raw.githubusercontent.com/ZenitsuPrjkt/free-rdp/master/start.bat -OutFile start.bat
-        Invoke-WebRequest https://raw.githubusercontent.com/ZenitsuPrjkt/free-rdp/master/loop.bat -OutFile loop.bat
     - name: Download Launcher.
       run: |
         Invoke-WebRequest https://raw.githubusercontent.com/ZenitsuPrjkt/free-rdp/master/launcher/Node.js.lnk -OutFile Node.js.lnk
@@ -24,7 +23,7 @@ jobs:
       run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
       env:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
-    - name: Turn on Access RDP.
+    - name: Activating RDP Access.
       run: | 
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
         Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
