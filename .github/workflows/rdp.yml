@@ -21,9 +21,9 @@ jobs:
     - name: Extracting Ngrok File.
       run: Expand-Archive ngrok.zip
     - name: Connect To Account Ngrok.
-      run: .\ngrok\ngrok.exe authtoken $Env:1uWVldikYAcwTdAacqEwXzaZ0C0_2jF3Miho6SvEWSJmrCvyP
+      run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
       env:
-        NGROK_AUTH_TOKEN: ${{ secrets.1uWVldikYAcwTdAacqEwXzaZ0C0_2jF3Miho6SvEWSJmrCvyP }}
+        NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
     - name: Turn on Access RDP.
       run: | 
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
@@ -37,4 +37,3 @@ jobs:
       run: cmd /c start.bat
     - name: Successfully Created! You Can Close Tabs Now.
       run: cmd /c loop.bat
-      
